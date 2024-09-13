@@ -59,7 +59,8 @@ df['Humidity3pmCat']=df['Humidity3pm'].apply(lambda x: '1.>60' if x>60 else '0.<
 # Show a snaphsot of data
 print(df)
 
-# This function helps to calculate probability distribution, which goes into BBN (note, can handle up to 2 parents)
+# This function helps to calculate probability distribution, which goes into BBN
+                                  (note, can handle up to 2 parents)
 def probs(data, child, parent1=None, parent2=None):
     if parent1==None:
         # Calculate probabilities
@@ -80,8 +81,8 @@ def probs(data, child, parent1=None, parent2=None):
 # Create nodes by using our earlier function to automatically calculate probabilities
 H9am = BbnNode(Variable(0, 'H9am', ['<=60', '>60'])
                                   ,probs(df, child='Humidity9amCat'))
-H3pm = BbnNode(Variable(1, 'H3pm', ['<=60', '>60']), probs(df, child='Humidity3pmCat'
-                                  ,parent1='Humidity9amCat'))
+H3pm = BbnNode(Variable(1, 'H3pm', ['<=60', '>60']), probs(df,
+                    child='Humidity3pmCat',parent1='Humidity9amCat'))
 W = BbnNode(Variable(2, 'W', ['<=40', '40-50', '>50']),
                                  probs(df, child='WindGustSpeedCat'))
 RT = BbnNode(Variable(3, 'RT', ['No', 'Yes']), probs(df, child='RainTomorrow',
