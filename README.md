@@ -78,12 +78,14 @@ def probs(data, child, parent1=None, parent2=None):
     else: print("Error in Probability Frequency Calculations")
     return prob
 # Create nodes by using our earlier function to automatically calculate probabilities
-H9am = BbnNode(Variable(0, 'H9am', ['<=60', '>60']), probs(df, child='Humidity9amCat'))
+H9am = BbnNode(Variable(0, 'H9am', ['<=60', '>60'])
+                                  ,probs(df, child='Humidity9amCat'))
 H3pm = BbnNode(Variable(1, 'H3pm', ['<=60', '>60']), probs(df, child='Humidity3pmCat'
-                                                      , parent1='Humidity9amCat'))
-W = BbnNode(Variable(2, 'W', ['<=40', '40-50', '>50']), probs(df, child='WindGustSpeedCat'))
+                                  ,parent1='Humidity9amCat'))
+W = BbnNode(Variable(2, 'W', ['<=40', '40-50', '>50']),
+                                 probs(df, child='WindGustSpeedCat'))
 RT = BbnNode(Variable(3, 'RT', ['No', 'Yes']), probs(df, child='RainTomorrow',
-                                       parent1='Humidity3pmCat', parent2='WindGustSpeedCat'))
+                        parent1='Humidity3pmCat', parent2='WindGustSpeedCat'))
 
 # Create Network
 bbn = Bbn() \
