@@ -1,7 +1,7 @@
 ### Name: VIKAASH K S
 ### Register No: 212223240179
 ### Ex.No: 1
-### DATE: 
+### DATE: 09/08/2024
 <H1 ALIGN=CENTER> Implementation of Bayesian Networks</H1>
 
 ## Aim :
